@@ -4,10 +4,13 @@ from .locators import ProductPageLocators
 class ProductPage(BasePage):
 
     def adding_to_basket_from_the_product_page(self):
-        self.add_to_basket()
-        self.solve_quiz_and_get_code()
+        self.adding_to_basket_and_check_success_message()
         self.message_product_added_to_basket()
         self.message_basket_cost()
+
+    def adding_to_basket_and_check_success_message(self):
+        self.add_to_basket()
+        self.solve_quiz_and_get_code()
 
     def add_to_basket(self):
         self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON).click()
@@ -22,4 +25,10 @@ class ProductPage(BasePage):
         message_text_basket_cost = self.browser.find_element(*ProductPageLocators.BASKET_COST).text
         assert product_cost == message_text_basket_cost, f"The cost of the basket is not the same as the price of the product."
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
 
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message displays, but it should hide"
