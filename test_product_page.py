@@ -15,12 +15,14 @@ class TestGuest():
         page.open()
         page.should_be_login_link()
 
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         link_login = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link_login)
         page.open()
         page.go_to_login_page()
 
+    @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, link)
         page.open()
@@ -45,6 +47,7 @@ class TestGuest():
         page.adding_to_basket_and_check_success_message()
         page.should_disappear_success_message()
 
+    @pytest.mark.need_review
     def test_guest_cant_see_product_in_basket_opened_from_main_page(self, browser):
         link_Basket = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = BasketPage(browser, link_Basket)
@@ -70,6 +73,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, link)
         page.open()
