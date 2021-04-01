@@ -48,7 +48,7 @@ class TestGuest():
         page.should_disappear_success_message()
 
     @pytest.mark.need_review
-    def test_guest_cant_see_product_in_basket_opened_from_main_page(self, browser):
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
         link_Basket = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = BasketPage(browser, link_Basket)
         page.open()
