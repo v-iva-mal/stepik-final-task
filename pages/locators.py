@@ -2,6 +2,12 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LANGUAGE = (By.CSS_SELECTOR, ".form-control>[selected='selected']")
+
+class BasketPageLocatirs():
+    BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-group [class='btn btn-default']")
+    BASKET_EMPTY = (By.CSS_SELECTOR, "#content_inner>p")
+    BASKET_ADD_PRODUCT = (By.CSS_SELECTOR, "#basket_formset")
 
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
